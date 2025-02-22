@@ -27,6 +27,7 @@ function downloadInvoice() {
     });
 }
 
+// Cloudinary Configuration
 const cloudName = "dues89nfp"; // Replace with your Cloudinary cloud name
 const uploadPreset = "invoice"; // Replace with your upload preset
 
@@ -44,7 +45,7 @@ async function uploadInvoice() {
     formData.append("upload_preset", uploadPreset);
 
     try {
-        const response = await fetch(`https://api.cloudinary.com/v1_1/${dues89nfp}/upload`, {
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
             method: "POST",
             body: formData
         });
