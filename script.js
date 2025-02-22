@@ -64,3 +64,102 @@ async function uploadInvoice() {
         alert("Upload failed. Please try again.");
     }
 }
+document.addEventListener("DOMContentLoaded", loadTemplates);
+
+// Function to Generate Invoice
+function generateInvoice() {
+    let invoiceData = [];
+    
+    document.querySelectorAll(".formRow").forEach(row => {
+        let rowData = {};
+        row.querySelectorAll("input").forEach(input => {
+            rowData[input.dataset.field] = input.value;
+        });
+        invoiceData.push(rowData);
+    });
+
+    let outputHTML = "<h2>Invoice</h2>";
+    invoiceData.forEach((data, index) => {
+        outputHTML += `<h3>Row ${index + 1}</h3>`;
+        for (let key in data) {
+            outputHTML += `<p><strong>${key}:</strong> ${data[key]}</p>`;
+        }
+    });
+
+    document.getElementById("invoiceOutput").innerHTML = outputHTML;
+    document.getElementById("invoicePreview").style.display = "block";
+}
+
+// Save Invoice Template
+function saveTemplate() {
+    let templateName = prompt("Enter a name for the template:");
+    if (!templateName) return;
+
+    let templateFields = [];
+    document.querySelectorAll(".formRow:first-child input").forEach(input => {
+        templateFields.push(input.dataset.field);
+    });
+
+    let templates = JSON.parse(localStorage.getItem("invoiceTemplates")) || {};
+    templates[templateName] = templateFields;
+    localStorage.setItem("invoiceTemplates", JSON.stringify(templates));
+
+    alert("Template saved successfully!");
+    loadTemplates();
+}
+
+// Load Templates into Dropdown
+function loadTemplates() {
+    let templates = JSON.parse(localStorage.getItem("invoiceTemplates")) || {};
+    let templateSelect = document.getElementById("templateSelect");
+
+    templateSelect.innerHTML = '<option value="default">Default Template</option>';
+    for (let name in templates) {
+        let option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        templateSelect.appendChild(option);
+    }
+}
+
+// Apply Selected Template and Adjust Form
+function loadTemplate() {
+    let selectedTemplate = document.getElementById("templateSelect").value;
+    if (selectedTemplate === "default") return;
+
+    let templates = JSON.parse(localStorage.getItem("invoiceTemplates")) || {};
+    let templateFields = templates[selectedTemplate];
+
+    let formFieldsContainer = document.getElementById("formFieldsContainer");
+    formFieldsContainer.innerHTML = ""; // Clear existing fields
+
+    addRow(templateFields); // Add first row based on the template
+}
+
+// Function to Add a New Row
+function addRow(fields = null) {
+    let formFieldsContainer = document.getElementById("formFieldsContainer");
+
+    let row = document.createElement("div");
+    row.classList.add("formRow");
+
+    let selectedTemplate = document.getElementById("templateSelect").value;
+    let templates = JSON.parse(localStorage.getItem("invoiceTemplates")) || {};
+    let templateFields = fields || templates[selectedTemplate] || ["Item", "Quantity", "Price"];
+
+    templateFields.forEach(field => {
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = field;
+        input.dataset.field = field;
+        row.appendChild(input);
+    });
+
+    let removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.type = "button";
+    removeButton.onclick = () => row.remove();
+    row.appendChild(removeButton);
+
+    formFieldsContainer.appendChild(row);
+}

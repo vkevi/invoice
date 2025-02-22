@@ -60,5 +60,26 @@
     <script src="script.js"></script>
 =======
 >>>>>>> 6ecc726 (Updated specific files)
+
+<form id="invoiceForm">
+    <label for="templateSelect">Choose Template:</label>
+    <select id="templateSelect">
+        <option value="default">Default Template</option>
+    </select>
+    <button type="button" onclick="loadTemplate()">Load Template</button>
+
+    <div id="formFieldsContainer">
+        <!-- Rows of form fields will be added here -->
+    </div>
+
+    <button type="button" onclick="addRow()">Add Row</button>
+    <button type="button" onclick="generateInvoice()">Generate Invoice</button>
+    <button type="button" onclick="saveTemplate()">Save as Template</button>
+</form>
+
+<div id="invoicePreview">
+    <h3>Invoice Preview</h3>
+    <div id="invoiceOutput"></div>
+</div>
 </body>
 </html>
