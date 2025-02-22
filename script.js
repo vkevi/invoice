@@ -26,3 +26,42 @@ function downloadInvoice() {
         doc.save("Invoice.pdf");
     });
 }
+
+const cloudName = "dues89nfp"; // Replace with your Cloudinary cloud name
+const uploadPreset = "invoice"; // Replace with your upload preset
+
+async function uploadInvoice() {
+    const fileInput = document.getElementById("invoiceUpload");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("Please select a file first.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
+
+    try {
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${dues89nfp}/upload`, {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+        console.log("Uploaded File URL:", data.secure_url);
+        
+        // Display uploaded invoice link
+        const invoiceList = document.getElementById("invoiceList");
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<a href="${data.secure_url}" target="_blank">View Invoice</a>`;
+        invoiceList.appendChild(listItem);
+        
+        alert("Invoice uploaded successfully!");
+    } catch (error) {
+        console.error("Upload failed:", error);
+        alert("Upload failed. Please try again.");
+    }
+}
+
