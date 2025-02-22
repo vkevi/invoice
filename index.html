@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Invoice Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Auto Invoice Generator</h2>
+        <form id="invoiceForm">
+            <label for="invoiceNumber">Invoice Number:</label>
+            <input type="text" id="invoiceNumber" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="clientName">Client Name:</label>
+            <input type="text" id="clientName" required>
+
+            <label for="amount">Total Amount:</label>
+            <input type="number" id="amount" required>
+
+            <button type="button" onclick="generateInvoice()">Generate Invoice</button>
+        </form>
+
+        <div id="invoicePreview">
+            <h3>Invoice Preview</h3>
+            <div id="invoiceOutput">
+                <h2>Invoice</h2>
+                <p><strong>Invoice No:</strong> <span id="outInvoiceNumber"></span></p>
+                <p><strong>Date:</strong> <span id="outDate"></span></p>
+                <p><strong>Client Name:</strong> <span id="outClientName"></span></p>
+                <p><strong>Total Amount:</strong> $<span id="outAmount"></span></p>
+            </div>
+            <button onclick="downloadInvoice()">Download as PDF</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
