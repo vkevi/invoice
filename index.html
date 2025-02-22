@@ -22,7 +22,7 @@
             <label for="amount">Total Amount:</label>
             <input type="number" id="amount" required>
 
-            <button type="button" onclick="generateInvoice()">Generate Invoice</button>
+            <button type="button" onclick="generateInvoice(event)">Generate Invoice</button>
         </form>
 
         <div id="invoicePreview">
@@ -38,18 +38,25 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 <<<<<<< HEAD
+=======
+>>>>>>> e7c84a865b384bfd76b78b27f2fa4c839e1d17be
     <h1>Invoice Generator</h1>
-
     <input type="file" id="invoiceUpload" accept=".pdf,.jpg,.png">
     <button onclick="uploadInvoice()">Upload Invoice</button>
 
     <h2>Uploaded Invoices</h2>
     <ul id="invoiceList"></ul>
 
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Main Script -->
     <script src="script.js"></script>
 =======
 >>>>>>> 6ecc726 (Updated specific files)
