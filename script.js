@@ -26,6 +26,7 @@ function downloadInvoice() {
         doc.save("Invoice.pdf");
     });
 }
+<<<<<<< HEAD
 
 const cloudName = "dues89nfp"; // Replace with your Cloudinary cloud name
 const uploadPreset = "invoice"; // Replace with your upload preset
@@ -65,3 +66,5 @@ async function uploadInvoice() {
     }
 }
 
+=======
+>>>>>>> 6ecc726 (Updated specific files)
