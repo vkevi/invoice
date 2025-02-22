@@ -55,7 +55,7 @@ async function uploadInvoice() {
         // Display uploaded invoice link
         const invoiceList = document.getElementById("invoiceList");
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<a href="${data.secure_url}" target="_blank">View Invoice</a>`;
+        listItem.innerHTML = `<a href="RM{data.secure_url}" target="_blank">View Invoice</a>`;
         invoiceList.appendChild(listItem);
         
         alert("Invoice uploaded successfully!");
