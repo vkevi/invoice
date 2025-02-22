@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Invoice Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Auto Invoice Generator</h2>
+        <form id="invoiceForm">
+            <label for="invoiceNumber">Invoice Number:</label>
+            <input type="text" id="invoiceNumber" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="clientName">Client Name:</label>
+            <input type="text" id="clientName" required>
+
+            <label for="amount">Total Amount:</label>
+            <input type="number" id="amount" required>
+
+            <button type="button" onclick="generateInvoice(event)">Generate Invoice</button>
+        </form>
+
+        <div id="invoicePreview">
+            <h3>Invoice Preview</h3>
+            <div id="invoiceOutput">
+                <h2>Invoice</h2>
+                <p><strong>Invoice No:</strong> <span id="outInvoiceNumber"></span></p>
+                <p><strong>Date:</strong> <span id="outDate"></span></p>
+                <p><strong>Client Name:</strong> <span id="outClientName"></span></p>
+                <p><strong>Total Amount:</strong> $<span id="outAmount"></span></p>
+            </div>
+            <button onclick="downloadInvoice()">Download as PDF</button>
+        </div>
+    </div>
+
+<<<<<<< HEAD
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+<<<<<<< HEAD
+=======
+>>>>>>> e7c84a865b384bfd76b78b27f2fa4c839e1d17be
+    <h1>Invoice Generator</h1>
+    <input type="file" id="invoiceUpload" accept=".pdf,.jpg,.png">
+    <button onclick="uploadInvoice()">Upload Invoice</button>
+
+    <h2>Uploaded Invoices</h2>
+    <ul id="invoiceList"></ul>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+=======
+>>>>>>> 6ecc726 (Updated specific files)
+
+<form id="invoiceForm">
+    <label for="templateSelect">Choose Template:</label>
+    <select id="templateSelect">
+        <option value="default">Default Template</option>
+    </select>
+    <button type="button" onclick="loadTemplate()">Load Template</button>
+
+    <div id="formFieldsContainer">
+        <!-- Rows of form fields will be added here -->
+    </div>
+
+    <button type="button" onclick="addRow()">Add Row</button>
+    <button type="button" onclick="generateInvoice()">Generate Invoice</button>
+    <button type="button" onclick="saveTemplate()">Save as Template</button>
+</form>
+
+<div id="invoicePreview">
+    <h3>Invoice Preview</h3>
+    <div id="invoiceOutput"></div>
+</div>
+</body>
+</html>
